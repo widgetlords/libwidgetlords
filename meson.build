@@ -10,7 +10,8 @@ pi_spi = library('pi_spi',
                  'pi_spi_8ai.c',
                  'pi_spi_8di.c',
                  'pi_spi_8ko.c',
-                 dependencies: wiringpi)
+                 dependencies: wiringpi,
+                 install: true)
 
 executable('pi_spi_8ko_demo', 'pi_spi_8ko_demo.c', link_with: pi_spi, dependencies: wiringpi)
 executable('pi_spi_8ai_demo', 'pi_spi_8ai_demo.c', link_with: pi_spi, dependencies: wiringpi)

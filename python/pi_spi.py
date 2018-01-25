@@ -4,7 +4,7 @@ from time import sleep
 import os
 
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
-libPath = os.path.join(__location__, 'bin/libpi_spi.so')
+libPath = os.path.join(__location__, 'libpi_spi.so')
 pi_spi = cdll.LoadLibrary(libPath)
 
 def pi_spi_init():
@@ -45,34 +45,3 @@ class Mod2AO:
 
     def write_single(self, counts: int, channel: int):
         pi_spi.pi_spi_2ao_write_single(counts, channel, int(self.optional))
-
-pi_spi_init()
-
-'''relays = Mod8KO()
-while True:
-    #relays.write(0x00)
-    relays.write_single(0, 0)
-    sleep(1)
-    #relays.write(0xFF)
-    relays.write_single(1, 0)
-    sleep(1)'''
-
-'''inputs = Mod8DI()
-while True:
-    print(inputs.read())
-    sleep(0.5)'''
-
-'''inputs = Mod8AI()
-while True:
-    print(inputs.read_single(1))
-    sleep(0.5)'''
-
-outputs = Mod2AO()
-while True:
-    outputs.write_single(745, 0)
-    outputs.write_single(3723, 1)
-    sleep(2)
-    
-    outputs.write_single(3733, 0)
-    outputs.write_single(745, 1)
-    sleep(2)
