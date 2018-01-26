@@ -6,9 +6,9 @@ int main(void)
   	
   	while(1)
   	{
-		pi_spi_8ko_write(0xaa);
+		pi_spi_8ko_write(0xaa, DEFAULT);
 		delay(1000);
-		pi_spi_8ko_write(0x55);
+		pi_spi_8ko_write(0x55, DEFAULT);
 		delay(1000);
 	}
 
