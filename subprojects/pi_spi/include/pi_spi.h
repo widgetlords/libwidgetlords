@@ -2,7 +2,6 @@
 #define PI_SPI_H
 
 #include <stdint.h>
-#include "p99/p99.h"
 
 // Define Pins as used by Pi-SPi modules
 #define CS_2AO		4
@@ -21,9 +20,14 @@ void pi_spi_init();
 #define DEFAULT 0
 #define OPTIONAL 1
 
-#include "pi_spi_2ao.h"
-#include "pi_spi_8ai.h"
-#include "pi_spi_8di.h"
+void pi_spi_2ao_write_single(uint16_t counts, uint8_t channel, uint8_t type)
+
+uint16_t pi_spi_8ai_read_single(uint8_t channel, uint8_t type)
+
+uint8_t pi_spi_8di_read(uint8_t address, uint8_t type)
+uint8_t pi_spi_8di_read_single(uint8_t channel, uint8_t address, uint8_t type)
+void pi_spi_8di_init(uint8_t address, uint8_t type)
+
 #include "pi_spi_8ko.h"
 
 void delay(unsigned int howLong);
