@@ -5,7 +5,7 @@
 
 static const uint8_t CS[2] = { CS_2AO, CS_SPARE1 };
 
-void pi_spi_2ao_write_single(uint16_t counts, uint8_t channel, uint8_t type)
+void pi_spi_2ao_write_single(uint8_t channel, uint16_t counts, uint8_t type)
 {
 	type = (type != DEFAULT && type != OPTIONAL) ? DEFAULT : type;
 	channel = channel > 1 ? 1 : channel;

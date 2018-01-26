@@ -17,8 +17,8 @@ class Mod8KO:
     def write(self, data):
         pi_spi.pi_spi_8ko_write(data, int(self.optional))
 
-    def write_single(self, data: int, channel: int):
-        pi_spi.pi_spi_8ko_write_single(data, channel, int(self.optional))
+    def write_single(self, channel: int, data: int):
+        pi_spi.pi_spi_8ko_write_single(channel, data, int(self.optional))
 
 class Mod8DI:
     def __init__(self, address: int = 0, optional: bool = False):
@@ -43,5 +43,5 @@ class Mod2AO:
     def __init__(self, optional: bool = False):
         self.optional = optional
 
-    def write_single(self, counts: int, channel: int):
-        pi_spi.pi_spi_2ao_write_single(counts, channel, int(self.optional))
+    def write_single(self, channel: int, counts: int):
+        pi_spi.pi_spi_2ao_write_single(channel, counts, int(self.optional))

@@ -4,10 +4,10 @@ pi_spi_init()
 
 outputs = Mod2AO()
 while True:
-    outputs.write_single(745, 0)
-    outputs.write_single(3723, 1)
+    outputs.write_single(0, 745)
+    outputs.write_single(1, 3723)
     sleep(2)
     
-    outputs.write_single(3733, 0)
-    outputs.write_single(745, 1)
+    outputs.write_single(0, 3733)
+    outputs.write_single(1, 745)
     sleep(2)

@@ -17,7 +17,7 @@ void pi_spi_8ko_write(uint8_t data, uint8_t type)
 	state[type] = data;
 }
 
-void pi_spi_8ko_write_single(uint8_t data, uint8_t channel, uint8_t type)
+void pi_spi_8ko_write_single(uint8_t channel, uint8_t data, uint8_t type)
 {
 	type = (type != DEFAULT && type != OPTIONAL) ? DEFAULT : type;
 	channel = channel > 7 ? 7 : channel;

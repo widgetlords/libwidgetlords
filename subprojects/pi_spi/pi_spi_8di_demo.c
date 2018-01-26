@@ -1,6 +1,7 @@
 #include "pi_spi.h"
 
 #include <stdio.h>
+#include <unistd.h>
 
 int main(void) 
 {	
@@ -10,7 +11,7 @@ int main(void)
   	while(1)
   	{
 		printf("%i\n", pi_spi_8di_read(0, DEFAULT));
-		delay(500);
+		usleep(500000);
 	}
 
 	return 0;

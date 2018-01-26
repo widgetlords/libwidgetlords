@@ -1,6 +1,7 @@
 #include "pi_spi.h"
 
 #include <stdio.h>
+#include <unistd.h>
 
 int main(void) 
 {	
@@ -13,7 +14,7 @@ int main(void)
 		{
 			printf("%i\t", pi_spi_8ai_read_single(i, DEFAULT));
 		}
-		delay(500);
+		usleep(500000);
 	}
 
 	return 0;

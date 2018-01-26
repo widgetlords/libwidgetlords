@@ -1,5 +1,7 @@
 #include "pi_spi_din.h"
 
+#include <unistd.h>
+
 int main(void) 
 {	
   	pi_spi_din_init();
@@ -8,9 +10,9 @@ int main(void)
   	while(1)
   	{
 		pi_spi_din_4ko_write(CE3, 0, 0x5);
-		delay(1000);
+		usleep(1000000);
 		pi_spi_din_4ko_write(CE3, 0, 0xA);
-		delay(1000);
+		usleep(1000000);
 	}
 
 	return 0;

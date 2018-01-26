@@ -19,7 +19,7 @@ lib = library('pi_spi',
 dep = declare_dependency(include_directories: include, link_with: lib)
 install_headers('include/pi_spi.h')
 
-executable('pi_spi_8ko_demo', 'pi_spi_8ko_demo.c', dependencies: [wiringpi, dep])
-executable('pi_spi_8ai_demo', 'pi_spi_8ai_demo.c', dependencies: [wiringpi, dep])
-executable('pi_spi_8di_demo', 'pi_spi_8di_demo.c', dependencies: [wiringpi, dep])
-executable('pi_spi_2ao_demo', 'pi_spi_2ao_demo.c', dependencies: [wiringpi, dep])
+executable('pi_spi_8ko_demo', 'pi_spi_8ko_demo.c', dependencies: [dep])
+executable('pi_spi_8ai_demo', 'pi_spi_8ai_demo.c', dependencies: [dep])
+executable('pi_spi_8di_demo', 'pi_spi_8di_demo.c', dependencies: [dep])
+executable('pi_spi_2ao_demo', 'pi_spi_2ao_demo.c', dependencies: [dep])

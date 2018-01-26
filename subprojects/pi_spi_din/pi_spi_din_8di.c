@@ -21,7 +21,7 @@ uint8_t pi_spi_din_8di_read(uint8_t chip_select, uint8_t address)
 	return data[2];
 }
 
-uint8_t pi_spi_din_8di_read_single(uint8_t chip_select, uint8_t channel, uint8_t address)
+uint8_t pi_spi_din_8di_read_single(uint8_t chip_select, uint8_t address, uint8_t channel)
 {
 	channel = channel > 7 ? 7 : channel;
 	
