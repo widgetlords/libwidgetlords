@@ -6,3 +6,4 @@ project('libwidgetlords', 'c', default_options: '-std=c11')
 
 pi_spi = subproject('pi_spi').get_variable('dep')
 pi_spi_din = subproject('pi_spi_din').get_variable('dep')
+spi = subproject('spi').get_variable('dep')

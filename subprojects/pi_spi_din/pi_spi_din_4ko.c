@@ -1,5 +1,6 @@
+#include <spi.h>
 #include <wiringPi.h> 
-#include <wiringPiSPI.h>
+//#include <wiringPiSPI.h>
 
 #include "pi_spi_din.h"
 
@@ -36,7 +37,7 @@ static uint8_t chip_select_to_index(uint8_t chip_select)
 	}
 }
 
-void pi_spi_din_4ko_write(uint8_t chip_select, uint8_t address, uint8_t state)
+void pi_spi_din_4ko_write(enum chip_enable ce, uint8_t address, uint8_t state)
 {
 	address = address > 3 ? 3 : address;
 	
@@ -47,23 +48,31 @@ void pi_spi_din_4ko_write(uint8_t chip_select, uint8_t address, uint8_t state)
 		state
 	};
 	
-	digitalWrite(chip_select, LOW);
+	/*digitalWrite(chip_select, LOW);
 	wiringPiSPIDataRW(0, data, 3);
 	digitalWrite(chip_select, HIGH);
 	
-	relay_states[chip_select_to_index(chip_select)][address] = state;
+	relay_states[chip_select_to_index(chip_select)][address] = state;*/
+	
+	spi_transfer(ce, data, 3);
+	
+	relay_states[ce][address] = state;
 }
 
-void pi_spi_din_4ko_write_single(uint8_t chip_select, uint8_t address, uint8_t channel, uint8_t state)
+void pi_spi_din_4ko_write_single(enum chip_enable ce, uint8_t address, uint8_t channel, uint8_t state)
 {
 	channel = channel > 3 ? 3 : channel;
 	
-	uint8_t current_state = relay_states[chip_select_to_index(chip_select)][address];
+	/*uint8_t current_state = relay_states[chip_select_to_index(chip_select)][address];
 	state = (~(1 << channel) & current_state) | (state << channel);
-	pi_spi_din_4ko_write(chip_select, address, state);
+	pi_spi_din_4ko_write(chip_select, address, state);*/
+	
+	uint8_t current_state = relay_states[ce][address];
+	state = (~(1 << channel) & current_state) | (state << channel);
+	pi_spi_din_4ko_write(ce, address, state);
 }
 
-void pi_spi_din_4ko_init(uint8_t chip_select, uint8_t address)
+void pi_spi_din_4ko_init(enum chip_enable ce, uint8_t address)
 {
 	address = address > 3 ? 3 : address;
 	
@@ -75,16 +84,20 @@ void pi_spi_din_4ko_init(uint8_t chip_select, uint8_t address)
 		0xFF					// IPOL is inverted
 	};
 	
-	digitalWrite(chip_select, LOW);
+	/*digitalWrite(chip_select, LOW);
 	wiringPiSPIDataRW(0, data, 4);
-	digitalWrite(chip_select, HIGH);
+	digitalWrite(chip_select, HIGH);*/
+	
+	spi_transfer(ce, data, 4);
 	
 	// Enable hardware addressing
 	data[0] = 0x40 | (address << 1);	// Write command
 	data[1] = 0x05;						// IOCON register
 	data[2] = 0x08;						// HAEN
 	
-	digitalWrite(chip_select, LOW);
+	/*digitalWrite(chip_select, LOW);
 	wiringPiSPIDataRW(0, data, 3);
-	digitalWrite(chip_select, HIGH);
+	digitalWrite(chip_select, HIGH);*/
+	
+	spi_transfer(ce, data, 3);
 }
