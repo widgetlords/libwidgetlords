@@ -1,0 +1,15 @@
+Source: libwidgetlords
+Section: libs
+Priority: optional
+Maintainer: Kelsey Maes <kelsey@vpprocess.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.8
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Git: https://anonscm.debian.org/collab-maint/libwidgetlords.git
+#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/libwidgetlords.git
+
+Package: libwidgetlords
+Architecture: armhf
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Libraries and stuff for PI-SPI
+ Libraries and stuff for PI-SPI and PI-SPI-DIN
