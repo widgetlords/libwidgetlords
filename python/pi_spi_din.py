@@ -4,9 +4,10 @@ from time import sleep
 
 import os
 
-__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
-libPath = os.path.join(__location__, 'libpi_spi_din.so')
-pi_spi_din = cdll.LoadLibrary(libPath)
+#__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+#libPath = os.path.join(__location__, 'libpi_spi_din.so')
+#pi_spi_din = cdll.LoadLibrary(libPath)
+pi_spi_din = cdll.LoadLibrary('libpi_spi_din.so')
 
 def pi_spi_din_init():
     pi_spi_din.pi_spi_din_init()
