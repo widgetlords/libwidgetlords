@@ -54,7 +54,8 @@ void pi_spi_din_4ko_write(enum chip_enable ce, uint8_t address, uint8_t state)
 	
 	relay_states[chip_select_to_index(chip_select)][address] = state;*/
 	
-	spi_transfer(ce, data, 3);
+	spi_open(ce, 500000);
+	spi_transfer(data, 3);
 	
 	relay_states[ce][address] = state;
 }
@@ -88,7 +89,8 @@ void pi_spi_din_4ko_init(enum chip_enable ce, uint8_t address)
 	wiringPiSPIDataRW(0, data, 4);
 	digitalWrite(chip_select, HIGH);*/
 	
-	spi_transfer(ce, data, 4);
+	spi_open(ce, 500000);
+	spi_transfer(data, 4);
 	
 	// Enable hardware addressing
 	data[0] = 0x40 | (address << 1);	// Write command
@@ -99,5 +101,5 @@ void pi_spi_din_4ko_init(enum chip_enable ce, uint8_t address)
 	wiringPiSPIDataRW(0, data, 3);
 	digitalWrite(chip_select, HIGH);*/
 	
-	spi_transfer(ce, data, 3);
+	spi_transfer(data, 3);
 }

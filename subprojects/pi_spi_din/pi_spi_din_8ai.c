@@ -19,7 +19,8 @@ uint16_t pi_spi_din_8ai_read_single(enum chip_enable ce, uint8_t channel)
 	wiringPiSPIDataRW(0, data, 3);
 	digitalWrite(chip_enable, HIGH);*/
 	
-	spi_transfer(ce, data, 3);
+	spi_open(ce, 500000);
+	spi_transfer(data, 3);
 	
 	return (((uint16_t)data[1] & 0x0F) << 8) | data[2];
 }

@@ -19,7 +19,8 @@ uint8_t pi_spi_din_8di_read(enum chip_enable ce, uint8_t address)
 	wiringPiSPIDataRW(0, data, 3);
 	digitalWrite(chip_select, HIGH);*/
 	
-	spi_transfer(ce, data, 3);
+	spi_open(ce, 500000);
+	spi_transfer(data, 3);
 	
 	return data[2];
 }
@@ -47,7 +48,8 @@ void pi_spi_din_8di_init(enum chip_enable ce, uint8_t address)
 	wiringPiSPIDataRW(0, data, 4);
 	digitalWrite(chip_select, HIGH);*/
 	
-	spi_transfer(ce, data, 4);
+	spi_open(ce, 500000);
+	spi_transfer(data, 4);
 	
 	// Enable hardware addressing
 	data[0] = 0x40 | (address << 1);	// Write command
@@ -58,5 +60,5 @@ void pi_spi_din_8di_init(enum chip_enable ce, uint8_t address)
 	wiringPiSPIDataRW(0, data, 3);
 	digitalWrite(chip_select, HIGH);*/
 	
-	spi_transfer(ce, data, 3);
+	spi_transfer(data, 3);
 }

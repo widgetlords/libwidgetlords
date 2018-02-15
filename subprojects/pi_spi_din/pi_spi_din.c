@@ -12,5 +12,5 @@ void pi_spi_din_init()
 	pinMode(HEN, OUTPUT);
 	digitalWrite(HEN, HIGH);
 
-	spi_init(8, 500000);
+	//spi_init(5, 500000);
 }
