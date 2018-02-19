@@ -1,9 +1,6 @@
-#include <wiringPi.h> 
-#include <wiringPiSPI.h>
+#include <spi.h>
 
 #include "pi_spi.h"
-
-static const uint8_t CS[2] = { CS_8AI, CS_SPARE1 };
 
 uint16_t pi_spi_8ai_read_single(uint8_t channel, uint8_t type)
 {
@@ -17,9 +14,16 @@ uint16_t pi_spi_8ai_read_single(uint8_t channel, uint8_t type)
 		0
 	};
 	
-	digitalWrite(CS[type], LOW);
-	wiringPiSPIDataRW(0, data, 3);
-	digitalWrite(CS[type], HIGH);
+	if(type == DEFAULT)
+	{
+		spi_open(SPI_8AI, 500000);
+	}
+	else if(type == OPTIONAL)
+	{
+		spi_open(SPI_SPARE, 500000);
+	}
+	
+	spi_transfer(data, 3);
 	
 	return (((uint16_t)data[1] & 0x0F) << 8) | data[2];
 }

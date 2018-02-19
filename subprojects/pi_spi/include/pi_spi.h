@@ -4,16 +4,14 @@
 #include <stdint.h>
 
 // Define Pins as used by Pi-SPi modules
-#define CS_2AO		4
-#define CS_8DI		17
-#define CS_SPARE2	27
-#define CS_SPARE1	22
-#define CS_LEDS		18
-#define CS_LCD1		23
-#define CS_LCD2		24
-#define CS_8KO		8
-#define CS_8AI		7
 #define DIR_RS485	25
+
+// SPI module channels
+#define SPI_8KO 0
+#define SPI_8AI 1
+#define SPI_2AO 2
+#define SPI_8DI 3
+#define SPI_SPARE 4
 
 void pi_spi_init();
 

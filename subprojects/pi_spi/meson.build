@@ -4,6 +4,8 @@ project('pi_spi', 'c', default_options: '-std=c11')
 # meson still can't locate wiringPi using regular methods
 wiringpi = meson.get_compiler('c').find_library('wiringPi')
 
+spi = subproject('spi').get_variable('dep')
+
 include = include_directories('include')
 lib = library('pi_spi',
               'pi_spi.c',
@@ -11,7 +13,7 @@ lib = library('pi_spi',
               'pi_spi_8ai.c',
               'pi_spi_8di.c',
               'pi_spi_8ko.c',
-              dependencies: [wiringpi],
+              dependencies: [wiringpi, spi],
               install: true,
               include_directories: include)
 

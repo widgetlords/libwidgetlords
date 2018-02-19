@@ -1,9 +1,6 @@
-#include <wiringPi.h> 
-#include <wiringPiSPI.h>
+#include <spi.h>
 
 #include "pi_spi.h"
-
-static const uint8_t CS[2] = { CS_2AO, CS_SPARE1 };
 
 void pi_spi_2ao_write_single(uint8_t channel, uint16_t counts, uint8_t type)
 {
@@ -16,7 +13,14 @@ void pi_spi_2ao_write_single(uint8_t channel, uint16_t counts, uint8_t type)
 		counts & 0xFF									// lower 8 bits of counts
 	};
 	
-	digitalWrite(CS[type], LOW);
-	wiringPiSPIDataRW(0, data, 2);
-	digitalWrite(CS[type], HIGH);
+	if(type == DEFAULT)
+	{
+		spi_open(SPI_2AO, 500000);
+	}
+	else if(type == OPTIONAL)
+	{
+		spi_open(SPI_SPARE, 500000);
+	}
+	
+	spi_transfer(data, 2);
 }
