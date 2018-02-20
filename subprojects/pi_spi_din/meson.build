@@ -13,6 +13,9 @@ lib = library('pi_spi_din',
               'pi_spi_din_8di.c',
               'pi_spi_din_4ko.c',
               'pi_spi_din_4ao.c',
+              'vpe_2901a.c',
+              'sdafe.c',
+              'vpe_3011b.c',
               dependencies: [spi, wiringpi],
               install: true,
               include_directories: include)
@@ -25,3 +28,5 @@ executable('pi_spi_din_4ko_demo', 'pi_spi_din_4ko_demo.c', dependencies: [dep])
 executable('pi_spi_din_8ai_demo', 'pi_spi_din_8ai_demo.c', dependencies: [dep])
 executable('pi_spi_din_8di_demo', 'pi_spi_din_8di_demo.c', dependencies: [dep])
 executable('pi_spi_din_4ao_demo', 'pi_spi_din_4ao_demo.c', dependencies: [dep])
+executable('vpe_2901a_demo', 'vpe_2901a_demo.c', dependencies: [dep])
+executable('vpe_3011b_demo', 'vpe_3011b_demo.c', dependencies: [dep])
