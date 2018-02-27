@@ -8,9 +8,8 @@ void pi_spi_din_init()
 	wiringPiSetupGpio();
 	
 	//pinMode(DIR_RS485, OUTPUT);
+	//digitalWrite(DIR_RS485, LOW); // Receive mode
 
 	pinMode(HEN, OUTPUT);
-	digitalWrite(HEN, HIGH);
-
-	//spi_init(5, 500000);
+	digitalWrite(HEN, HIGH); // Disable HART
 }

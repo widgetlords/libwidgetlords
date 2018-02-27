@@ -9,16 +9,18 @@ pi_spi_din = subproject('pi_spi_din').get_variable('dep')
 spi = subproject('spi').get_variable('dep')
 
 
-# maybe one day
-#py = import('python3')
-#message(py.sysconfig_path())
+if get_option('python')
+  # maybe one day
+  #py = import('python3')
+  #message(py.sysconfig_path())
+  
+  message('Getting python install dir')
+  r = run_command('python3', '-c', 'from distutils.sysconfig import get_python_lib; print(get_python_lib())')
+  if r.returncode() != 0
+    error('Cannot find python install dir')
+  endif
+  python_dir = r.stdout().strip()
+  message(python_dir)
 
-message('Getting python install dir')
-r = run_command('python3', '-c', 'from distutils.sysconfig import get_python_lib; print(get_python_lib())')
-if r.returncode() != 0
-	error('Cannot find python install dir')
+  install_data('python/pi_spi.py', 'python/pi_spi_din.py', install_dir: python_dir)
 endif
-python_dir = r.stdout().strip()
-message(python_dir)
-
-install_data('python/pi_spi.py', 'python/pi_spi_din.py', install_dir: python_dir)

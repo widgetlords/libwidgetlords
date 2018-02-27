@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 #define HEN 17
+//#define DIR_RS485 25
 
 enum chip_enable
 {
