@@ -11,7 +11,7 @@ uint16_t pi_spi_din_8ai_read_single(enum chip_enable ce, uint8_t channel)
 	uint8_t data[3] =
 	{
 		0x06 | (channel >> 2 & 0x01),
-		channel << 5 & 0xC0,
+		channel << 6 & 0xC0,
 		0
 	};
 	
