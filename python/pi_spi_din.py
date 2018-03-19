@@ -4,7 +4,7 @@ from time import sleep
 
 import os
 
-pi_spi_din = cdll.LoadLibrary('libpi_spi_din.so')
+pi_spi_din = cdll.LoadLibrary('libwidgetlords.so')
 
 def pi_spi_din_init():
     pi_spi_din.pi_spi_din_init()

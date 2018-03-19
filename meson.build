@@ -30,14 +30,15 @@ lib = library('widgetlords',
               include_directories: include,
               version: '1.0.0')
 
-install_headers('include/pi_spi.h', 'include/pi_spi_din.h')
+install_headers('include/pi_spi.h', 'include/pi_spi_din.h', subdir: 'widgetlords')
+
+dep = declare_dependency(include_directories: include, link_with: lib)
 
 pkg.generate(libraries: [lib], 
              version: '1.0.0', 
              name: 'libwidgetlords',
-             description: 'libwidgetlords')
-
-dep = declare_dependency(include_directories: include, link_with: lib)
+             description: 'libwidgetlords',
+             subdirs: ['widgetlords'])
 
 if get_option('python')
   # maybe one day
