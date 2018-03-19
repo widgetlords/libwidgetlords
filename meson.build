@@ -2,12 +2,18 @@ project('libwidgetlords', 'c', default_options: '-std=c11')
 
 pkg = import('pkgconfig')
 
+cc = meson.get_compiler('c')
+
+# add -lm
+m_dep = cc.find_library('m', required : false)
+
 #wiringpi = dependency('wiringPi')
 # meson still can't locate wiringPi using regular methods
-wiringpi = meson.get_compiler('c').find_library('wiringPi')
+wiringpi = cc.find_library('wiringPi')
 
 include = include_directories('include')
 source = [
+  'src/helpers.c',
   'src/pi_spi.c',
   'src/pi_spi_2ao.c',
   'src/pi_spi_8ai.c',
@@ -25,12 +31,12 @@ source = [
 ]
 lib = library('widgetlords',
               source,
-              dependencies: [wiringpi],
+              dependencies: [m_dep, wiringpi],
               install: true,
               include_directories: include,
               version: '1.0.0')
 
-install_headers('include/pi_spi.h', 'include/pi_spi_din.h', subdir: 'widgetlords')
+install_headers('include/pi_spi.h', 'include/pi_spi_din.h', 'include/widgetlords.h', subdir: 'widgetlords')
 
 dep = declare_dependency(include_directories: include, link_with: lib)
 
@@ -63,6 +69,9 @@ executable('pi_spi_2ao_demo', 'src/pi_spi_2ao_demo.c', dependencies: [dep])
 
 executable('pi_spi_din_4ko_demo', 'src/pi_spi_din_4ko_demo.c', dependencies: [dep])
 executable('pi_spi_din_8ai_demo', 'src/pi_spi_din_8ai_demo.c', dependencies: [dep])
+executable('pi_spi_din_8ai_mademo', 'src/pi_spi_din_8ai_mademo.c', dependencies: [dep])
+executable('pi_spi_din_8ai_10vdemo', 'src/pi_spi_din_8ai_10vdemo.c', dependencies: [dep])
+executable('pi_spi_din_8ai_thermdemo', 'src/pi_spi_din_8ai_thermdemo.c', dependencies: [dep])
 executable('pi_spi_din_8di_demo', 'src/pi_spi_din_8di_demo.c', dependencies: [dep])
 executable('pi_spi_din_4ao_demo', 'src/pi_spi_din_4ao_demo.c', dependencies: [dep])
 executable('vpe_2901a_demo', 'src/vpe_2901a_demo.c', dependencies: [dep])

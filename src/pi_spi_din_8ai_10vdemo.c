@@ -8,12 +8,14 @@ int main(void)
   	
   	while(1)
   	{
-		printf("\nCH 1\tCH 2\tCH 3\tCH 4\tCH 5\tCH 6\tCH 7\tCH 8\n");
 		for(int i = 0; i < 8; ++i)
 		{
-			printf("%i\t", pi_spi_din_8ai_read_single(CE1, i));
+			uint16_t counts = pi_spi_din_8ai_read_single(CE0, i);
+			double vdc = widgetlords_counts_to_value(counts, 0, 3700, 0., 10.);
+			printf("CH %i: %f V\n", i, vdc);
 		}
 		usleep(500000);
+		printf("\n");
 	}
 
 	return 0;
