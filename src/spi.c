@@ -3,6 +3,7 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <string.h>
+#include <unistd.h>
 #include <sys/ioctl.h>
 #include <asm/ioctl.h>
 #include <linux/spi/spidev.h>
@@ -121,8 +122,8 @@ void spi_transfer(uint8_t *data, uint32_t len)
 	
 	memset(&spi, 0, sizeof(spi));
 
-	spi.tx_buf        = (uint64_t)data;
-	spi.rx_buf        = (uint64_t)data;
+	spi.tx_buf        = (uint32_t)data;
+	spi.rx_buf        = (uint32_t)data;
 	spi.len           = len;
 	spi.delay_usecs   = spiDelay;
 	spi.speed_hz      = spiSpeed;
@@ -176,61 +177,3 @@ void spi_open(uint8_t channel, uint32_t speed)
 		return;
 	}
 }
-
-/*void pi_spi_din_init()
-{
-	wiringPiSetupGpio();
-	
-	//pinMode(DIR_RS485, OUTPUT);
-
-	pinMode(HEN, OUTPUT);
-	digitalWrite(HEN, HIGH);
-
-	if((fd = open(spiDev4, O_RDWR)) < 0)
-	{
-		printf("Unable to open SPI device\n");
-		return;
-	}
-
-	// Set SPI parameters.
-
-	if(ioctl(fd, SPI_IOC_WR_MODE, &spiMode) < 0)
-	{
-		printf("SPI Mode Change failure: %s\n", strerror(errno));
-		//return;
-	}
-  
-	if(ioctl(fd, SPI_IOC_WR_BITS_PER_WORD, &spiBPW) < 0)
-	{
-		printf("SPI BPW Change failure: %s\n", strerror(errno));
-		//return;
-	}
-
-    if(ioctl(fd, SPI_IOC_WR_MAX_SPEED_HZ, &speed) < 0)
-    {
-		printf("SPI Speed Change failure: %s\n", strerror(errno));
-		//return;
-	}
-}
-
-int spi_xfer(int channel, unsigned char *data, int len)
-{
-  struct spi_ioc_transfer spi;
-
-  //channel &= 1;
-
-// Mentioned in spidev.h but not used in the original kernel documentation
-//	test program )-:
-
-  memset(&spi, 0, sizeof(spi));
-
-  spi.tx_buf        = (unsigned long)data;
-  spi.rx_buf        = (unsigned long)data;
-  spi.len           = len;
-  spi.delay_usecs   = spiDelay;
-  spi.speed_hz      = speed;
-  spi.bits_per_word = spiBPW;
-
-  return ioctl(fd, SPI_IOC_MESSAGE(1), &spi);
-}*/
-
