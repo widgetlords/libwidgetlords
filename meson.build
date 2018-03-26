@@ -34,7 +34,7 @@ lib = library('widgetlords',
               dependencies: [m_dep, wiringpi],
               install: true,
               include_directories: include,
-              version: '1.0.0')
+              version: '1.0.1')
 
 install_headers('include/pi_spi.h', 'include/pi_spi_din.h', 'include/widgetlords.h', subdir: 'widgetlords')
 
@@ -43,7 +43,7 @@ install_data('libwidgetlords.vapi', install_dir: 'share/vala/vapi')
 dep = declare_dependency(include_directories: include, link_with: lib)
 
 pkg.generate(libraries: [lib], 
-             version: '1.0.0', 
+             version: '1.0.1', 
              name: 'libwidgetlords',
              description: 'libwidgetlords',
              subdirs: ['widgetlords'])
@@ -61,7 +61,10 @@ if get_option('python')
   python_dir = r.stdout().strip()
   message(python_dir)
 
-  install_data('python/pi_spi.py', 'python/pi_spi_din.py', install_dir: python_dir)
+  install_data('python/widgetlords/__init__.py',
+               'python/widgetlords/pi_spi.py', 
+               'python/widgetlords/pi_spi_din.py', 
+               install_dir: join_paths(python_dir, 'widgetlords'))
 endif
 
 executable('pi_spi_8ko_demo', 'src/pi_spi_8ko_demo.c', dependencies: [dep])

@@ -32,7 +32,7 @@ uint8_t pi_spi_8di_read_single(uint8_t address, uint8_t channel, uint8_t type)
 {
 	channel = channel > 7 ? 7 : channel;
 	
-	return pi_spi_8di_read(address, type) >> channel & 0x01;
+	return (pi_spi_8di_read(address, type) >> channel) & 0x01;
 }
 
 void pi_spi_8di_init(uint8_t address, uint8_t type)

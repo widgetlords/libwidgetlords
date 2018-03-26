@@ -4,9 +4,7 @@ Priority: optional
 Maintainer: Kelsey Maes <kelsey@vpprocess.com>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.8
-Homepage: <insert the upstream URL, if relevant>
-#Vcs-Git: https://anonscm.debian.org/collab-maint/libwidgetlords.git
-#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/libwidgetlords.git
+Homepage: https://widgetlords.com
 
 Package: libwidgetlords
 Architecture: armhf
