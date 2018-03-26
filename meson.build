@@ -38,6 +38,8 @@ lib = library('widgetlords',
 
 install_headers('include/pi_spi.h', 'include/pi_spi_din.h', 'include/widgetlords.h', subdir: 'widgetlords')
 
+install_data('libwidgetlords.vapi', install_dir: 'share/vala/vapi')
+
 dep = declare_dependency(include_directories: include, link_with: lib)
 
 pkg.generate(libraries: [lib], 
