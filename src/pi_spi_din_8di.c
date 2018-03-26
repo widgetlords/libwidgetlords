@@ -29,7 +29,7 @@ uint8_t pi_spi_din_8di_read_single(enum chip_enable ce, uint8_t address, uint8_t
 {
 	channel = channel > 7 ? 7 : channel;
 	
-	return pi_spi_din_8di_read(ce, address) >> channel & 0x01;
+	return (pi_spi_din_8di_read(ce, address) >> channel) & 0x01;
 }
 
 void pi_spi_din_8di_init(enum chip_enable ce, uint8_t address)

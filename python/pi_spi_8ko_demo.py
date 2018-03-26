@@ -1,6 +1,7 @@
-from pi_spi import *
+from time import sleep
+from widgetlords.pi_spi import *
 
-pi_spi_init()
+init()
 
 relays = Mod8KO()
 while True:
