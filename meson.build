@@ -34,7 +34,7 @@ lib = library('widgetlords',
               dependencies: [m_dep, wiringpi],
               install: true,
               include_directories: include,
-              version: '1.0.1')
+              version: '1.0.2')
 
 install_headers('include/pi_spi.h', 'include/pi_spi_din.h', 'include/widgetlords.h', subdir: 'widgetlords')
 
@@ -43,7 +43,7 @@ install_data('libwidgetlords.vapi', install_dir: 'share/vala/vapi')
 dep = declare_dependency(include_directories: include, link_with: lib)
 
 pkg.generate(libraries: [lib], 
-             version: '1.0.1', 
+             version: '1.0.2', 
              name: 'libwidgetlords',
              description: 'libwidgetlords',
              subdirs: ['widgetlords'])
