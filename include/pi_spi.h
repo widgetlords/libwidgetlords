@@ -7,16 +7,22 @@
 #define DIR_RS485	25
 
 // SPI module channels
-#define SPI_8KO 0
-#define SPI_8AI 1
-#define SPI_2AO 2
-#define SPI_8DI 3
-#define SPI_SPARE 4
+#define SPI_8KO     0
+#define SPI_8AI     1
+#define SPI_2AO     2
+#define SPI_8DI     3
+#define SPI_SPARE1  4
+#define SPI_SPARE2  5
+#define SPI_SPARE3  6
+#define SPI_SPARE   SPI_SPARE1
 
 void pi_spi_init();
 
-#define DEFAULT 0
-#define OPTIONAL 1
+#define DEFAULT   0
+#define SPARE1    1
+#define SPARE2    2
+#define SPARE3    3
+#define OPTIONAL  SPARE1
 
 void pi_spi_2ao_write_single(uint8_t channel, uint16_t counts, uint8_t type);
 

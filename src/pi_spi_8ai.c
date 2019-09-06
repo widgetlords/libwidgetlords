@@ -1,12 +1,10 @@
+#include <pi_spi.h>
 #include <spi.h>
-
-#include "pi_spi.h"
 
 #define MAX_SPI_FREQ	100000
 
 uint16_t pi_spi_8ai_read_single(uint8_t channel, uint8_t type)
 {
-	type = (type != DEFAULT && type != OPTIONAL) ? DEFAULT : type;
 	channel = channel > 7 ? 7 : channel;
 	
 	uint8_t data[3] =
@@ -20,9 +18,21 @@ uint16_t pi_spi_8ai_read_single(uint8_t channel, uint8_t type)
 	{
 		spi_open(SPI_8AI, MAX_SPI_FREQ);
 	}
-	else if(type == OPTIONAL)
+	else if(type == SPARE1)
 	{
-		spi_open(SPI_SPARE, MAX_SPI_FREQ);
+		spi_open(SPI_SPARE1, MAX_SPI_FREQ);
+	}
+	else if(type == SPARE2)
+	{
+		spi_open(SPI_SPARE2, MAX_SPI_FREQ);
+	}
+	else if(type == SPARE3)
+	{
+		spi_open(SPI_SPARE3, MAX_SPI_FREQ);
+	}
+	else
+	{
+		return 0;
 	}
 	
 	spi_transfer(data, 3);
