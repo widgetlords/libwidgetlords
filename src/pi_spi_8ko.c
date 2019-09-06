@@ -1,6 +1,5 @@
+#include <pi_spi.h>
 #include <spi.h>
-
-#include "pi_spi.h"
 
 static uint8_t state[2] = { 0x00, 0x00 };
 

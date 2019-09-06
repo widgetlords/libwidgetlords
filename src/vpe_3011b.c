@@ -1,7 +1,6 @@
+#include <gpio.h>
+#include <pi_spi_din.h>
 #include <spi.h>
-#include <wiringPi.h>
-
-#include "pi_spi_din.h"
 
 // GPIO pins
 #define K1 5
@@ -11,10 +10,11 @@
 
 void vpe_3011b_init()
 {
-	pinMode(K1, OUTPUT);
-	pinMode(K2, OUTPUT);
-	pinMode(K3, OUTPUT);
-	pinMode(K4, OUTPUT);
+	gpio_init();
+	gpio_configure(K1, GPIO_OUTPUT);
+	gpio_configure(K2, GPIO_OUTPUT);
+	gpio_configure(K3, GPIO_OUTPUT);
+	gpio_configure(K4, GPIO_OUTPUT);
 	
 	// init DI
 	uint8_t data[] =
@@ -38,44 +38,44 @@ void vpe_3011b_4ko_write_single(uint8_t channel, uint8_t value)
 		case 0:
 		if(value)
 		{
-			digitalWrite(K1, HIGH);
+			gpio_write(K1, GPIO_HIGH);
 		}
 		else
 		{
-			digitalWrite(K1, LOW);
+			gpio_write(K1, GPIO_LOW);
 		}
 		break;
 		
 		case 1:
 		if(value)
 		{
-			digitalWrite(K2, HIGH);
+			gpio_write(K2, GPIO_HIGH);
 		}
 		else
 		{
-			digitalWrite(K2, LOW);
+			gpio_write(K2, GPIO_LOW);
 		}
 		break;
 		
 		case 2:
 		if(value)
 		{
-			digitalWrite(K3, HIGH);
+			gpio_write(K3, GPIO_HIGH);
 		}
 		else
 		{
-			digitalWrite(K3, LOW);
+			gpio_write(K3, GPIO_LOW);
 		}
 		break;
 		
 		case 3:
 		if(value)
 		{
-			digitalWrite(K4, HIGH);
+			gpio_write(K4, GPIO_HIGH);
 		}
 		else
 		{
-			digitalWrite(K4, LOW);
+			gpio_write(K4, GPIO_LOW);
 		}
 		break;
 	}

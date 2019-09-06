@@ -7,10 +7,6 @@ cc = meson.get_compiler('c')
 # add -lm
 m_dep = cc.find_library('m', required : false)
 
-#wiringpi = dependency('wiringPi')
-# meson still can't locate wiringPi using regular methods
-wiringpi = cc.find_library('wiringPi')
-
 include = include_directories('include')
 source = [
   'src/gpio.c',
@@ -32,19 +28,20 @@ source = [
 ]
 lib = library('widgetlords',
               source,
-              dependencies: [m_dep, wiringpi],
+              # dependencies: [m_dep, wiringpi],
+              dependencies: [m_dep],
               install: true,
               include_directories: include,
-              version: '1.0.2')
+              version: '2.0.0')
 
-install_headers('include/pi_spi.h', 'include/pi_spi_din.h', 'include/widgetlords.h', subdir: 'widgetlords')
+install_headers('include/gpio.h', 'include/pi_spi.h', 'include/pi_spi_din.h', 'include/spi.h', 'include/widgetlords.h', subdir: 'widgetlords')
 
 install_data('libwidgetlords.vapi', install_dir: 'share/vala/vapi')
 
 dep = declare_dependency(include_directories: include, link_with: lib)
 
 pkg.generate(libraries: [lib], 
-             version: '1.0.2', 
+             version: '2.0.0', 
              name: 'libwidgetlords',
              description: 'libwidgetlords',
              subdirs: ['widgetlords'])
@@ -68,17 +65,17 @@ if get_option('python')
                install_dir: join_paths(python_dir, 'widgetlords'))
 endif
 
-executable('pi_spi_8ko_demo', 'src/pi_spi_8ko_demo.c', dependencies: [dep])
-executable('pi_spi_8ai_demo', 'src/pi_spi_8ai_demo.c', dependencies: [dep])
-executable('pi_spi_8di_demo', 'src/pi_spi_8di_demo.c', dependencies: [dep])
-executable('pi_spi_2ao_demo', 'src/pi_spi_2ao_demo.c', dependencies: [dep])
+executable('pi_spi_8ko_demo', 'src/demos/pi_spi_8ko_demo.c', dependencies: [dep])
+executable('pi_spi_8ai_demo', 'src/demos/pi_spi_8ai_demo.c', dependencies: [dep])
+executable('pi_spi_8di_demo', 'src/demos/pi_spi_8di_demo.c', dependencies: [dep])
+executable('pi_spi_2ao_demo', 'src/demos/pi_spi_2ao_demo.c', dependencies: [dep])
 
-executable('pi_spi_din_4ko_demo', 'src/pi_spi_din_4ko_demo.c', dependencies: [dep])
-executable('pi_spi_din_8ai_demo', 'src/pi_spi_din_8ai_demo.c', dependencies: [dep])
-executable('pi_spi_din_8ai_mademo', 'src/pi_spi_din_8ai_mademo.c', dependencies: [dep])
-executable('pi_spi_din_8ai_10vdemo', 'src/pi_spi_din_8ai_10vdemo.c', dependencies: [dep])
-executable('pi_spi_din_8ai_thermdemo', 'src/pi_spi_din_8ai_thermdemo.c', dependencies: [dep])
-executable('pi_spi_din_8di_demo', 'src/pi_spi_din_8di_demo.c', dependencies: [dep])
-executable('pi_spi_din_4ao_demo', 'src/pi_spi_din_4ao_demo.c', dependencies: [dep])
-executable('vpe_2901a_demo', 'src/vpe_2901a_demo.c', dependencies: [dep])
-executable('vpe_3011b_demo', 'src/vpe_3011b_demo.c', dependencies: [dep])
+executable('pi_spi_din_4ko_demo', 'src/demos/pi_spi_din_4ko_demo.c', dependencies: [dep])
+executable('pi_spi_din_8ai_demo', 'src/demos/pi_spi_din_8ai_demo.c', dependencies: [dep])
+executable('pi_spi_din_8ai_mademo', 'src/demos/pi_spi_din_8ai_mademo.c', dependencies: [dep])
+executable('pi_spi_din_8ai_10vdemo', 'src/demos/pi_spi_din_8ai_10vdemo.c', dependencies: [dep])
+executable('pi_spi_din_8ai_thermdemo', 'src/demos/pi_spi_din_8ai_thermdemo.c', dependencies: [dep])
+executable('pi_spi_din_8di_demo', 'src/demos/pi_spi_din_8di_demo.c', dependencies: [dep])
+executable('pi_spi_din_4ao_demo', 'src/demos/pi_spi_din_4ao_demo.c', dependencies: [dep])
+executable('vpe_2901a_demo', 'src/demos/vpe_2901a_demo.c', dependencies: [dep])
+executable('vpe_3011b_demo', 'src/demos/vpe_3011b_demo.c', dependencies: [dep])

@@ -1,6 +1,5 @@
+#include <pi_spi_din.h>
 #include <spi.h>
-
-#include "pi_spi_din.h"
 
 #define MAX_SPI_FREQ	100000
 

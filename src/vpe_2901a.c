@@ -1,7 +1,6 @@
+#include <gpio.h>
+#include <pi_spi_din.h>
 #include <spi.h>
-#include <wiringPi.h>
-
-#include "pi_spi_din.h"
 
 // GPIO pins
 #define K1 5
@@ -25,10 +24,11 @@ void vpe_2901a_2ao_write_single(uint8_t channel, uint16_t counts)
 
 void vpe_2901a_init()
 {
-	pinMode(K1, OUTPUT);
-	pinMode(K2, OUTPUT);
-	pinMode(DI1, INPUT);
-	pinMode(DI2, INPUT);
+	gpio_init();
+	gpio_configure(K1, GPIO_OUTPUT);
+	gpio_configure(K2, GPIO_OUTPUT);
+	gpio_configure(DI1, GPIO_INPUT);
+	gpio_configure(DI2, GPIO_INPUT);
 }
 
 void vpe_2901a_2ko_write_single(uint8_t channel, uint8_t value)
@@ -39,22 +39,22 @@ void vpe_2901a_2ko_write_single(uint8_t channel, uint8_t value)
 	{
 		if(value)
 		{
-			digitalWrite(K1, HIGH);
+			gpio_write(K1, GPIO_HIGH);
 		}
 		else
 		{
-			digitalWrite(K1, LOW);
+			gpio_write(K1, GPIO_LOW);
 		}
 	}
 	else
 	{
 		if(value)
 		{
-			digitalWrite(K2, HIGH);
+			gpio_write(K2, GPIO_HIGH);
 		}
 		else
 		{
-			digitalWrite(K2, LOW);
+			gpio_write(K2, GPIO_LOW);
 		}
 	}
 }
@@ -65,11 +65,11 @@ uint8_t vpe_2901a_2di_read_single(uint8_t channel)
 	
 	if(channel == 0)
 	{
-		value = digitalRead(DI1);
+		value = gpio_read(DI1);
 	}
 	else
 	{
-		value = digitalRead(DI2);
+		value = gpio_read(DI1);
 	}
 	
 	return !value;

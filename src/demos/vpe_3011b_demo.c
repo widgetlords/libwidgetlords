@@ -1,10 +1,9 @@
+#include <stdio.h>
 #include <unistd.h>
-
-#include <pi_spi_din.h>
+#include <widgetlords.h>
 
 int main(int argc, char** argv)
 {
-	pi_spi_din_init();
 	vpe_3011b_init();
 	
 	sdafe_set_type(VPE_3011B_SDAFE_1, TYPE_1_MA);

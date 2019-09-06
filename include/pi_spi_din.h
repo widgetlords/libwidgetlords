@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 #define HEN 17
-//#define DIR_RS485 25
+#define DIR_RS485 25
 
 enum chip_enable
 {
@@ -60,7 +60,7 @@ enum sdafe_type
 
 	TYPE_7_10VDC = 7,	// Input 0 to 10 VDC, Returns 0 to 10000, Scaler 1000
 	TYPE_8_10VDC = 8,	// Input 0 to 10 VDC, Returns 0 to 10000, Scaler 100
-	TYPE_9_10VDC = 9	// Input 2 to 10 VDC, Returns 0 to 10000, Scaler 100 Note: Readings below 2 VDC return as 0	
+	TYPE_9_10VDC = 9	// Input 2 to 10 VDC, Returns 0 to 10000, Scaler 100 Note: Readings below 2 VDC return as 0
 };
 
 enum sdafe_status

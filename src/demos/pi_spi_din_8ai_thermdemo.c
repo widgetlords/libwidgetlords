@@ -4,15 +4,13 @@
 
 int main(void) 
 {	
-  	pi_spi_din_init();
-  	
-  	while(1)
-  	{
+	while(1)
+	{
 		for(int i = 0; i < 8; ++i)
 		{
 			uint16_t counts = pi_spi_din_8ai_read_single(CE0, i);
-			double vdc = widgetlords_counts_to_value(counts, 0, 3700, 0., 10.);
-			printf("CH %i: %f V\n", i, vdc);
+			double temp = widgetlords_steinhart_hart(10000., 3380., 4095, counts);
+			printf("CH %i: %f C\n", i, temp);
 		}
 		usleep(500000);
 		printf("\n");

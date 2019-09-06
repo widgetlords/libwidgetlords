@@ -1,7 +1,6 @@
-#include <unistd.h>
+#include <pi_spi_din.h>
 #include <spi.h>
-
-#include "pi_spi_din.h"
+#include <unistd.h>
 
 static enum sdafe_type types[10] = 
 { 
@@ -68,6 +67,13 @@ static struct sdafe_reading read_data(uint8_t channel)
 	
 	if(data[0] != 0x55 || data[9] != 0x55)
 	{
+		// printf("[ ");
+		// for(int i = 0; i < 10; ++i)
+		// {
+		// 	printf("%d ", data[i]);
+		// }
+		// printf("]\n");
+		
 		reading.status = SDAFE_COMM_ERROR;
 		reading.value = 0;
 		reading.counts = 0;
