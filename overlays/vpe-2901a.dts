@@ -9,16 +9,16 @@
 		frag0: __overlay__ {
 			#address-cells = <1>;
 			#size-cells = <0>;
-			pinctrl-0 = <&spi0_pins &spi0_cs_pins>;
 			status = "okay";
-			cs-gpios = <&gpio 8 1>,		/* CE0 */ 
-				   <&gpio 7 1>,		/* CE1 */
-				   <&gpio 24 1>,	/* CE2 */
-   				   <&gpio 23 1>,	/* CE3 */
-				   <&gpio 18 1>,	/* CE4 */
-				   <&gpio 16 1>,	/* CE_2AO */
-				   <&gpio 21 1>,	/* CE_SDAFE1 */
-   				   <&gpio 20 1>; 	/* CE_SDAFE2 */
+			cs-gpios = 
+				<&gpio 8 1>,		/* CE0 */ 
+				<&gpio 7 1>,		/* CE1 */
+				<&gpio 24 1>,		/* CE2 */
+   			<&gpio 23 1>,		/* CE3 */
+				<&gpio 18 1>,		/* CE4 */
+				<&gpio 16 1>,		/* CE_2AO */
+				<&gpio 21 1>,		/* CE_SDAFE1 */
+   			<&gpio 20 1>; 	/* CE_SDAFE2 */
 
 			spidev@2{
 				compatible = "spidev";
@@ -67,7 +67,6 @@
 				#size-cells = <0>;
 				spi-max-frequency = <1000000>;
 			};
-
 		};
 	};
 
@@ -75,7 +74,6 @@
 		target = <&spi0_cs_pins>;
 		frag1: __overlay__ {
 			brcm,pins = <8 7 16 18 20 21 23 24>;
-			brcm,function = <1>; /* out */
 		};
 	};
 
@@ -93,10 +91,4 @@
 			};
 		};
 	};
-
-/*	__overrides__ {
-		cs2_pin = <&frag0>,"cs-gpios:12", <&spi0_cs_pins>,"brcm,pins:0";
-		cs3_pin = <&frag0>,"cs-gpios:24", <&spi0_cs_pins>,"brcm,pins:4";
-	};
-*/
 };
