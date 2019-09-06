@@ -13,6 +13,7 @@ wiringpi = cc.find_library('wiringPi')
 
 include = include_directories('include')
 source = [
+  'src/gpio.c',
   'src/helpers.c',
   'src/pi_spi.c',
   'src/pi_spi_2ao.c',

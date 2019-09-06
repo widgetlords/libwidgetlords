@@ -18,7 +18,8 @@ enum chip_enable
 void pi_spi_din_init();
 
 void pi_spi_din_4ao_init();
-void pi_spi_din_4ao_write_single(uint8_t channel, uint16_t counts);
+void pi_spi_din_4ao_write_single(uint8_t address, uint8_t channel, uint16_t counts);
+void pi_spi_din_4ao_close();
 
 uint16_t pi_spi_din_8ai_read_single(enum chip_enable ce, uint8_t channel);
 
