@@ -58,6 +58,24 @@ class Mod4AO:
         widgetlords.pi_spi_din_4ao_write_single(address, channel, counts)
 __all__.append('Mod4AO')
         
+class Mod4Freq:
+    def __init__(self, chip_enable: ChipEnable, address: int = 0):
+        self.chip_enable = chip_enable.value
+        self.address = address
+
+    def read_fixed(self, channel: int):
+        return widgetlords.pi_spi_din_4freq_read_fixed(self.chip_enable, self.address, channel)
+
+    def read_variable(self, channel: int):
+        return widgetlords.pi_spi_din_4freq_read_variable(self.chip_enable, self.address, channel)
+
+    def read_pulse(self, channel: int):
+        return widgetlords.pi_spi_din_4freq_read_pulse(self.chip_enable, self.address, channel)
+
+    def read_di(self):
+        return widgetlords.pi_spi_din_4freq_read_di(self.chip_enable, self.address)
+__all__.append('Mod4Freq')
+        
 class SDAFEType(Enum):
     TYPE_1_MA = 1		# Input 0 to 20 mA, Returns 0 to 20000, Scaler 1000
     TYPE_2_MA = 2		# Input 0 to 20 mA, Returns 0 to 10000, Scaler 100

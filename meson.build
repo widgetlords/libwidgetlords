@@ -21,6 +21,7 @@ source = [
   'src/pi_spi_din_8di.c',
   'src/pi_spi_din_4ko.c',
   'src/pi_spi_din_4ao.c',
+  'src/pi_spi_din_4freq.c',
   'src/vpe_2901a.c',
   'src/sdafe.c',
   'src/vpe_3011b.c',
@@ -77,5 +78,6 @@ executable('pi_spi_din_8ai_10vdemo', 'src/demos/pi_spi_din_8ai_10vdemo.c', depen
 executable('pi_spi_din_8ai_thermdemo', 'src/demos/pi_spi_din_8ai_thermdemo.c', dependencies: [dep])
 executable('pi_spi_din_8di_demo', 'src/demos/pi_spi_din_8di_demo.c', dependencies: [dep])
 executable('pi_spi_din_4ao_demo', 'src/demos/pi_spi_din_4ao_demo.c', dependencies: [dep])
+executable('pi_spi_din_4freq_demo', 'src/demos/pi_spi_din_4freq_demo.c', dependencies: [dep])
 executable('vpe_2901a_demo', 'src/demos/vpe_2901a_demo.c', dependencies: [dep])
 executable('vpe_3011b_demo', 'src/demos/vpe_3011b_demo.c', dependencies: [dep])

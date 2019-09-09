@@ -31,6 +31,11 @@ void pi_spi_din_4ko_write(enum chip_enable ce, uint8_t address, uint8_t state);
 void pi_spi_din_4ko_write_single(enum chip_enable ce, uint8_t address, uint8_t channel, uint8_t state);
 void pi_spi_din_4ko_init(enum chip_enable ce, uint8_t address);
 
+uint32_t pi_spi_din_4freq_read_fixed(enum chip_enable ce, uint8_t address, uint8_t channel);
+uint32_t pi_spi_din_4freq_read_variable(enum chip_enable ce, uint8_t address, uint8_t channel);
+uint32_t pi_spi_din_4freq_read_pulse(enum chip_enable ce, uint8_t address, uint8_t channel);
+uint8_t pi_spi_din_4freq_read_di(enum chip_enable ce, uint8_t address);
+
 void vpe_2901a_init();
 void vpe_2901a_2ao_write_single(uint8_t channel, uint16_t counts);
 void vpe_2901a_2ko_write_single(uint8_t channel, uint8_t value);
