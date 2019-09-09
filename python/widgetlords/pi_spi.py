@@ -31,11 +31,11 @@ class Mod8DI:
 __all__.append('Mod8DI')
 
 class Mod8AI:
-    def __init__(self, optional: bool = False):
-        self.optional = optional
+    def __init__(self, spare: int = 0):
+        self.spare = int(spare) % 4
 
     def read_single(self, channel: int):
-        return widgetlords.pi_spi_8ai_read_single(channel, int(self.optional))
+        return widgetlords.pi_spi_8ai_read_single(channel, self.spare)
 __all__.append('Mod8AI')
 
 class Mod2AO:

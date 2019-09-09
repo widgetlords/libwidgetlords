@@ -3,8 +3,6 @@
 from time import sleep
 from widgetlords.pi_spi_din import *
 
-init()
-
 vpe = VPE2901A()
 while True:
     vpe.ko_write_single(0, 1)

@@ -1,9 +1,7 @@
 from time import sleep
 from widgetlords.pi_spi import *
 
-init()
-
-inputs = Mod8AI()
+inputs = Mod8DI()
 while True:
-    print(inputs.read_single(0))
+    print(inputs.read())
     sleep(0.5)

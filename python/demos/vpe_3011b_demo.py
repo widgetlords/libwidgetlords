@@ -3,8 +3,6 @@
 from time import sleep
 from widgetlords.pi_spi_din import *
 
-init()
-
 vpe = VPE3011B()
 while True:
     vpe.ko_write_single(0, 1)
@@ -38,4 +36,3 @@ while True:
     print("SDAFE: ", an3.status, an3.value, "\t", an4.status, an4.value, "\n")
     
     sleep(1)
-

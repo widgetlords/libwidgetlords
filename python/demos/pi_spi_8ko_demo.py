@@ -1,8 +1,6 @@
 from time import sleep
 from widgetlords.pi_spi import *
 
-init()
-
 relays = Mod8KO()
 while True:
     relays.write(0x00)

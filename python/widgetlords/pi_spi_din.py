@@ -54,18 +54,18 @@ class Mod4AO:
     def __init__(self):
         widgetlords.pi_spi_din_4ao_init()
 
-    def write_single(self, channel: int, counts: int):
-        widgetlords.pi_spi_din_4ao_write_single(channel, counts)
+    def write_single(self, channel: int, counts: int, address = 0):
+        widgetlords.pi_spi_din_4ao_write_single(address, channel, counts)
 __all__.append('Mod4AO')
         
 class SDAFEType(Enum):
     TYPE_1_MA = 1		# Input 0 to 20 mA, Returns 0 to 20000, Scaler 1000
     TYPE_2_MA = 2		# Input 0 to 20 mA, Returns 0 to 10000, Scaler 100
-    TYPE_3_MA = 3 	# Input 4 to 20 mA, Returns 0 to 10000, Scaler 100 Note: Readings below 4 mA return as 0
+    TYPE_3_MA = 3 	    # Input 4 to 20 mA, Returns 0 to 10000, Scaler 100 Note: Readings below 4 mA return as 0
 
-    TYPE_4_5VDC = 4 # Input 0 to 5 VDC, Returns 0 to 5000, Scaler 1000
-    TYPE_5_5VDC = 5	# Input 0 to 5 VDC, Returns 0 to 10000, Scaler 100
-    TYPE_6_5VDC = 6	# Input 1 to 5 VDC, Returns 0 to 10000, Scaler 100 Note: Readngs beluw 1 VDC return as 0
+    TYPE_4_5VDC = 4     # Input 0 to 5 VDC, Returns 0 to 5000, Scaler 1000
+    TYPE_5_5VDC = 5	    # Input 0 to 5 VDC, Returns 0 to 10000, Scaler 100
+    TYPE_6_5VDC = 6	    # Input 1 to 5 VDC, Returns 0 to 10000, Scaler 100 Note: Readngs beluw 1 VDC return as 0
 
     TYPE_7_10VDC = 7	# Input 0 to 10 VDC, Returns 0 to 10000, Scaler 1000
     TYPE_8_10VDC = 8	# Input 0 to 10 VDC, Returns 0 to 10000, Scaler 100
