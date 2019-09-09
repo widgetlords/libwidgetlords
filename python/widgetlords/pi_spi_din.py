@@ -51,13 +51,13 @@ class Mod8AI:
 __all__.append('Mod8AI')
 
 class Mod4AO:
-    def __init__(self):
-        widgetlords.pi_spi_din_4ao_init()
+    def __init__(self, address: int = 0):
+        self.address = address
 
-    def write_single(self, channel: int, counts: int, address = 0):
-        widgetlords.pi_spi_din_4ao_write_single(address, channel, counts)
+    def write_single(self, channel: int, counts: int):
+        widgetlords.pi_spi_din_4ao_write_single(self.address, channel, counts)
 __all__.append('Mod4AO')
-        
+
 class Mod4Freq:
     def __init__(self, chip_enable: ChipEnable, address: int = 0):
         self.chip_enable = chip_enable.value
