@@ -62,7 +62,8 @@ if get_option('python')
 
   install_data('python/widgetlords/__init__.py',
                'python/widgetlords/pi_spi.py', 
-               'python/widgetlords/pi_spi_din.py', 
+               'python/widgetlords/pi_spi_din.py',
+               'python/pi_spi_din_4ao_prog.py', 
                install_dir: join_paths(python_dir, 'widgetlords'))
 endif
 
