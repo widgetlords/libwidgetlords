@@ -1,12 +1,11 @@
-#include <asm/ioctl.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <linux/spi/spidev.h>
-#include <spi.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/ioctl.h>
+#include <linux/ioctl.h>
 #include <unistd.h>
 
 static int fd = -1;
@@ -32,8 +31,8 @@ void spi_transfer(uint8_t *data, uint32_t len)
 	
 	memset(&spi, 0, sizeof(spi));
 
-	spi.tx_buf        = (uint32_t)data;
-	spi.rx_buf        = (uint32_t)data;
+	spi.tx_buf        = (unsigned long)data;
+	spi.rx_buf        = (unsigned long)data;
 	spi.len           = len;
 	spi.delay_usecs   = spiDelay;
 	spi.speed_hz      = spiSpeed;
