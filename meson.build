@@ -14,6 +14,7 @@ source = [
   'src/pi_spi.c',
   'src/pi_spi_2ao.c',
   'src/pi_spi_8ai.c',
+  'src/pi_spi_8ai_16b.c',
   'src/pi_spi_8di.c',
   'src/pi_spi_8ko.c',
   'src/pi_spi_din.c',
@@ -69,6 +70,7 @@ endif
 
 executable('pi_spi_8ko_demo', 'src/demos/pi_spi_8ko_demo.c', dependencies: [dep])
 executable('pi_spi_8ai_demo', 'src/demos/pi_spi_8ai_demo.c', dependencies: [dep])
+executable('pi_spi_8ai_16b_demo', 'src/demos/pi_spi_8ai_16b_demo.c', dependencies: [dep])
 executable('pi_spi_8di_demo', 'src/demos/pi_spi_8di_demo.c', dependencies: [dep])
 executable('pi_spi_2ao_demo', 'src/demos/pi_spi_2ao_demo.c', dependencies: [dep])
 

@@ -1,3 +1,9 @@
+libwidgetlords (2.1.0) unstable; urgency=medium
+
+  * Add support for PI-SPI-8AI-16B
+
+ --  Kelsey Maes <kelsey@vpprocess.com>  Mon, 18 Nov 2019 02:00:00 -0800
+
 libwidgetlords (2.0.0) unstable; urgency=medium
 
   * Drop dependency on wiringpi in favor of using the character-device GPIO API.

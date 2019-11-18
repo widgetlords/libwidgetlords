@@ -35,4 +35,7 @@ void pi_spi_8di_init(uint8_t address, uint8_t type);
 void pi_spi_8ko_write(uint8_t data, uint8_t type);
 void pi_spi_8ko_write_single(uint8_t channel, uint8_t data, uint8_t type);
 
+void pi_spi_8ai_16b_set_channel(uint8_t channel, uint8_t type);
+uint16_t pi_spi_8ai_16b_read(uint8_t type);
+
 #endif

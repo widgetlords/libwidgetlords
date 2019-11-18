@@ -45,3 +45,14 @@ class Mod2AO:
     def write_single(self, channel: int, counts: int):
         widgetlords.pi_spi_2ao_write_single(channel, counts, int(self.optional))
 __all__.append('Mod2AO')
+
+class Mod8AI16B:
+    def __init__(self, spare: int = 0):
+        self.spare = int(spare) % 4
+
+    def set_channel(self, channel: int):
+        widgetlords.pi_spi_8ai_16b_set_channel(channel)
+
+    def read(self):
+        return widgetlords.pi_spi_8ai_16b_read(self.spare)
+__all__.append('Mod8AI16B')
