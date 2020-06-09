@@ -69,7 +69,7 @@ uint8_t vpe_2901a_2di_read_single(uint8_t channel)
 	}
 	else
 	{
-		value = gpio_read(DI1);
+		value = gpio_read(DI2);
 	}
 	
 	return !value;
