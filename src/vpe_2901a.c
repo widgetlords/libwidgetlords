@@ -61,6 +61,8 @@ void vpe_2901a_2ko_write_single(uint8_t channel, uint8_t value)
 
 uint8_t vpe_2901a_2di_read_single(uint8_t channel)
 {
+	channel = channel > 1 ? 1 : channel;
+	
 	uint8_t value;
 	
 	if(channel == 0)
