@@ -1,3 +1,7 @@
+libwidgetlords (2.1.1) unstable; urgency=medium
+
+ --  Kelsey Maes <kelsey@vpprocess.com>  Thu, 15 Apr 2021 13:00:00 -0800
+
 libwidgetlords (2.1.0) unstable; urgency=medium
 
   * Add support for PI-SPI-8AI-16B
