@@ -1,4 +1,3 @@
-#include <asm/ioctl.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <linux/spi/spidev.h>
@@ -32,8 +31,8 @@ void spi_transfer(uint8_t *data, uint32_t len)
 	
 	memset(&spi, 0, sizeof(spi));
 
-	spi.tx_buf        = (uint32_t)data;
-	spi.rx_buf        = (uint32_t)data;
+	spi.tx_buf        = (uint64_t)data;
+	spi.rx_buf        = (uint64_t)data;
 	spi.len           = len;
 	spi.delay_usecs   = spiDelay;
 	spi.speed_hz      = spiSpeed;
