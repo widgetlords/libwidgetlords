@@ -48,26 +48,6 @@ pkg.generate(libraries: [lib],
              description: 'libwidgetlords',
              subdirs: ['widgetlords'])
 
-if get_option('python')
-  # maybe one day
-  #py = import('python3')
-  #message(py.sysconfig_path())
-  
-  message('Getting python install dir')
-  r = run_command('python3', '-c', 'from distutils.sysconfig import get_python_lib; print(get_python_lib())')
-  if r.returncode() != 0
-    error('Cannot find python install dir')
-  endif
-  python_dir = r.stdout().strip()
-  message(python_dir)
-
-  install_data('python/widgetlords/__init__.py',
-               'python/widgetlords/pi_spi.py', 
-               'python/widgetlords/pi_spi_din.py',
-               'python/pi_spi_din_4ao_prog.py', 
-               install_dir: join_paths(python_dir, 'widgetlords'))
-endif
-
 executable('pi_spi_8ko_demo', 'src/demos/pi_spi_8ko_demo.c', dependencies: [dep])
 executable('pi_spi_8ai_demo', 'src/demos/pi_spi_8ai_demo.c', dependencies: [dep])
 executable('pi_spi_8ai_16b_demo', 'src/demos/pi_spi_8ai_16b_demo.c', dependencies: [dep])
@@ -85,4 +65,5 @@ executable('pi_spi_din_4freq_demo', 'src/demos/pi_spi_din_4freq_demo.c', depende
 executable('vpe_2901a_demo', 'src/demos/vpe_2901a_demo.c', dependencies: [dep])
 executable('vpe_3011b_demo', 'src/demos/vpe_3011b_demo.c', dependencies: [dep])
 
+subdir('python')
 subdir('overlays')
