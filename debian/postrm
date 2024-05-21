@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+
+if [ -d /boot/firmware ]; then
+	BOOT_PATH=/boot/firmware
+else
+	BOOT_PATH=/boot
+fi
+OVERLAYS_PATH=$BOOT_PATH/overlays
+
+if [ "$1" = remove ] || [ "$1" = abort-install ] || [ "$1" = disappear ]; then
+  rm $OVERLAYS_PATH/pi-spi.dtbo
+  rm $OVERLAYS_PATH/vpe-2701c.dtbo
+  rm $OVERLAYS_PATH/vpe-2901a.dtbo
+  rm $OVERLAYS_PATH/vpe-3011b.dtbo
+fi

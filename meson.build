@@ -1,4 +1,4 @@
-project('libwidgetlords', 'c', default_options: '-std=c11')
+project('libwidgetlords', 'c', default_options: 'c_std=gnu11')
 
 pkg = import('pkgconfig')
 
@@ -84,3 +84,5 @@ executable('pi_spi_din_4ao_demo', 'src/demos/pi_spi_din_4ao_demo.c', dependencie
 executable('pi_spi_din_4freq_demo', 'src/demos/pi_spi_din_4freq_demo.c', dependencies: [dep])
 executable('vpe_2901a_demo', 'src/demos/vpe_2901a_demo.c', dependencies: [dep])
 executable('vpe_3011b_demo', 'src/demos/vpe_3011b_demo.c', dependencies: [dep])
+
+subdir('overlays')

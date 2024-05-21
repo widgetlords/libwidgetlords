@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+
+if [ -d /boot/firmware ]; then
+	BOOT_PATH=/boot/firmware
+else
+	BOOT_PATH=/boot
+fi
+OVERLAYS_PATH=$BOOT_PATH/overlays
+
+cp /usr/share/libwidgetlords/pi-spi.dtbo $OVERLAYS_PATH/
+cp /usr/share/libwidgetlords/vpe-2701c.dtbo $OVERLAYS_PATH/
+cp /usr/share/libwidgetlords/vpe-2901a.dtbo $OVERLAYS_PATH/
+cp /usr/share/libwidgetlords/vpe-3011b.dtbo $OVERLAYS_PATH/

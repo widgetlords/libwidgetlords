@@ -1,13 +1,10 @@
 Source: libwidgetlords
-Section: libs
-Priority: optional
 Maintainer: Kelsey Maes <kelsey@vpprocess.com>
-Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.8
-Homepage: https://widgetlords.com
+Section: libs
 
 Package: libwidgetlords
-Architecture: armhf
+Priority: optional
+Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Libraries and stuff for PI-SPI
  Libraries and stuff for PI-SPI and PI-SPI-DIN

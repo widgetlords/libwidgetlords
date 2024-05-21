@@ -1,12 +1,7 @@
 all:
-	meson bin --prefix /usr/
-	cd bin; meson configure -D python=true
-	cd bin; ninja
+	meson setup build
+	meson configure --buildtype release --prefix /usr -D python=true build
+	cd build; ninja
 
 install:
-	cd bin; ninja install
-	cd overlays; sh overlay.sh
-
-clean:
-	rm -rf bin
-	rm -f overlays/*.dtbo
+	cd build; meson install
