@@ -67,3 +67,5 @@ executable('vpe_3011b_demo', 'src/demos/vpe_3011b_demo.c', dependencies: [dep])
 
 subdir('python')
 subdir('overlays')
+
+install_data('widgetlords.conf', install_dir: 'lib/modules-load.d')
