@@ -1,6 +1,6 @@
+**/.DS_Store
 debian/.debhelper
-debian/libwidgetlords
 debian/debhelper-build-stamp
 debian/files
-debian/libwidgetlords.debhelper.log
-debian/libwidgetlords.substvars
+debian/*.substvars
+debian/libwidgetlords
