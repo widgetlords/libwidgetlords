@@ -45,29 +45,29 @@ def i2c_write_byte(byte):
     for i in range(8):
         sleep(DELAY)
         GPIO.output(SCK, 0)
-        
+
         if byte & 0x80:
             GPIO.output(SDA, 1)
         else:
             GPIO.output(SDA, 0)
-            
+
         sleep(DELAY)
         GPIO.output(SCK, 1)
-        
+
         byte <<= 1
-        
+
     sleep(DELAY)
     GPIO.output(SCK, 0)
     GPIO.output(SDA, 0)
-    
-    
+
+
 data = [
     (old_address + 0x60) << 1,
     0x61 | (old_address << 2),
     0x62 | (new_address << 2),
     0x63 | (new_address << 2)
 ]
-	
+
 GPIO.output(SDA, 0)
 sleep(DELAY)
 
@@ -75,7 +75,7 @@ i2c_write_byte(data[0])
 i2c_ack_byte()
 
 i2c_write_byte(data[1])
-input('Insert jumper J1 and press enter')
+input('Insert jumper J1 for older modules and J3 for newer modules and press enter')
 i2c_ack_byte()
 
 i2c_write_byte(data[2])
