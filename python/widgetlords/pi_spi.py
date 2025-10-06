@@ -51,7 +51,7 @@ class Mod8AI16B:
         self.spare = int(spare) % 4
 
     def set_channel(self, channel: int):
-        widgetlords.pi_spi_8ai_16b_set_channel(channel)
+        widgetlords.pi_spi_8ai_16b_set_channel(channel, self.spare)
 
     def read(self):
         return widgetlords.pi_spi_8ai_16b_read(self.spare)
